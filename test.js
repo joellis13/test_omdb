@@ -12,7 +12,10 @@ function searchTitle() {
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             jsonResponse = this.responseText;
-            document.getElementById("results").innerHTML = jsonResponse;
+            jsonObj = JSON.parse(this.responseText);
+            document.getElementById("results").innerHTML = jsonObj.Title + " (" + jsonObj.Year + ")" + 
+            "<br><br>" + 
+            jsonObj.Plot;
         }
     };
 
